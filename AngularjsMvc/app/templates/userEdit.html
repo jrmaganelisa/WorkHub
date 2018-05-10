@@ -1,0 +1,74 @@
+﻿<style>
+    fieldset {
+        border: 2px dotted deeppink !important;
+        width: 50%;
+        height: auto;
+        position: center;
+        margin-top: 30px;
+        margin-left: 25%;
+        padding-top: 5px;
+        padding-left: 20px;
+        border-radius: 15px;
+        background-color: rgba(255,182,193,0.3) !important;
+    }
+</style>
+<fieldset>
+    <h2 style="text-align:center;color:white;text-shadow:2px 4px 2px deeppink;">Update User</h2>
+    <form class="form-horizontal" name="frmEditUser" ng-submit="updateUser(user)" novalidate>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Surname</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" name="name" ng-model="user.Surname" ng-maxlength="32" required />
+                <span class="text-danger" ng-show="(frmEditUser.Surname.$touched || frmEditUser.Surname.$dirty) && frmEditUser.Surname.$invalid">
+                    <span ng-show="frmEditUser.Surname.$error.required">Surname is required</span>
+                    <span ng-show="frmEditUser.Surname.$error.maxlength">Surname must be less than or equal to 32</span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Firstname</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" name="Firstname" ng-model="user.Firstname" ng-maxlength="32" required />
+                <span class="text-danger" ng-show="(frmEditUser.Firstname.$touched || frmEditUser.Firstname.$dirty) && frmEditUser.Firstname.$invalid">
+                    <span ng-show="frmEditUser.Firstname.$error.required">First name is required</span>
+                    <span ng-show="frmEditUser.Firstname.$error.maxlength">First name must be less than or equal to 32</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Identity Type</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" name="IdentityType" ng-model="user.IdentityType" ng-maxlength="32" required />
+                <span class="text-danger" ng-show="(frmEditUser.IdentityType.$touched || frmEditUser.IdentityType.$dirty) && frmEditUser.IdentityType.$invalid">
+                  
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Identity Number</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" name="IdentityNumber" ng-model="user.IdentityNumber" ng-maxlength="50" ng-minlength="2" />
+                <span class="text-danger" ng-show="frmEditUser.IdentityNumber.$dirty && (frmEditUser.IdentityNumber.$error.minlength || frmEditUser.IdentityNumber.$error.maxlength)">
+                    must be in range 2 to 50
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Date Of Birth</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" name="DateOfBirth" ng-model="user.DateOfBirth" ng-maxlength="50" ng-minlength="2" />
+                <span class="text-danger" ng-show="frmEditUser.DateOfBirth.$dirty && (frmEditUser.DateOfBirth.$error.minlength || frmEditUser.DateOfBirth.$error.maxlength)">
+                    must be in range 2 to 50
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <input type="submit" class="btn btn-success" value="Update" ng-if="states.showUpdateButton" ng-disabled="frmEditUser.$pristine || frmEditUser.$invalid" />
+                <a href="#/" class="btn btn-danger">Cancel</a>
+            </div>
+        </div>
+    </form>
+    </fieldset>

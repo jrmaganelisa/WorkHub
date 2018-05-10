@@ -1,0 +1,58 @@
+﻿<h2 style="text-align:center;color:white;text-shadow:2px 4px 2px darkblue;">Client Record</h2>
+<div class="panel-body" style="background-color:white !important;">
+    <div class="row">
+
+    </div>
+   
+    <table class="table table-bordered">
+        <thead style="background-color:deeppink;color:white;">
+            <tr>
+                <th>
+                    Surname
+
+                </th>
+                <th>
+                    Firstname
+
+                </th>
+
+                <th>
+                    Identity Type
+
+                </th>
+                <th>
+                    Identity Number
+
+                </th>
+                <th>
+                    Date Of Birth
+
+                </th>
+
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="i in users">
+                <td>{{i.Surname}}</td>
+                <td>{{i.Firstname}}</td>
+                <td>{{i.IdentityType}}</td>
+                <td>{{i. IdentityNumber}}</td>
+                <td>{{i.DateOfBirth | limitTo : 10}}</td>
+
+                <td>
+                    <a href="#/edituser/{{i.Id}}" style="color:blue;">Edit</a> |
+                    <a href="" ng-click="deleteUser(i.Id)" style="color:red;">Delete</a>
+                </td>
+            </tr>
+            <tr ng-if="!users || users.length == 0">
+                <td colspan="4" style="text-align: center">
+                    No user data to display
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <a href="#/adduser" class="btn btn-primary" style="background-color:darkblue;text-shadow:2px 4px 2px white;">Add New</a>
+    </p>
+</div>

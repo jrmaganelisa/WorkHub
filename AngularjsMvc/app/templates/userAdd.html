@@ -1,0 +1,81 @@
+﻿<style>
+    fieldset {
+        border: 2px dotted deeppink !important;
+        width:50%;
+        height:auto;
+        position:center;
+        margin-top:30px;
+        margin-left:25%;
+        padding-top:5px;
+        padding-left:20px;
+        border-radius:15px;
+        background-color: rgba(255,182,193,0.3) !important;
+    }
+
+   
+</style>
+<h2 style="text-align:center;color:white;text-shadow:2px 4px 2px deeppink;">Add user</h2>
+<fieldset>
+    <form class="form-horizontal" name="frmAddUser" ng-submit="createUser(user)" novalidate>
+       
+        <!--User input form-->
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Surname</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" name="Surname" ng-model="user.Surname" ng-maxlength="32" required />
+                <span class="text-danger" ng-show="(frmAddUser.Surname.$touched || frmAddUser.Surname.$dirty) && frmAddUser.Surname.$invalid">
+                    <span ng-show="frmAddUser.Surname.$error.required">Surame is required</span>
+                    <span ng-show="frmAddUser.Surname.$error.maxlength">Surname must be less than or equal to 32</span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Firstname</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" name="Firstname" ng-model="user.Firstname" ng-maxlength="32" required />
+                <span class="text-danger" ng-show="(frmEditUser.Firstname.$touched || frmEditUser.Firstname.$dirty) && frmEditUser.Firstname.$invalid">
+                    <span ng-show="frmEditUser.Firstname.$error.required">Firstname is required</span>
+                    <span ng-show="frmEditUser.Firstname.$error.maxlength">Firstname must be less than or equal to 32</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Identity Type </label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="user.IdentityType" required>
+                    <option value="id">Id</option>
+                    <option value="passport">Passport</option>
+                </select>
+                <span class="text-danger" ng-show="(frmEditUser.identityType.$touched || frmEditUser.identityType.$dirty) && frmEditUser.identityType.$invalid">
+                    <span ng-show="frmEditUser.identityType.$error.required">Identity Type is required</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Identity Number</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" name="IdentityNumber" ng-model="user.IdentityNumber" ng-maxlength="13" ng-minlength="13" />
+                <span class="text-danger" ng-show="frmAddUser.IdentityNumber.$dirty && (frmAddUser.IdentityNumber.$error.minlength || frmAddUser.IdentityNumber.$error.maxlength)">
+                    Must be 13 charcters
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Date Of Birth</label>
+            <div class="col-lg-10">
+                <input type="date" class="form-control" name="DateOfBirth" ng-model="user.DateOfBirth" />
+                <span class="text-danger" ng-show="frmAddUser.DateOfBirth.$dirty && (frmAddUser.DateOfBirth.$error.minlength || frmAddUser.DateOfBirth.$error.maxlength)">
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <input type="submit" class="btn btn-success" value="Save" />
+                <a href="#/" class="btn btn-danger">Cancel</a>
+            </div>
+        </div>
+    </form>
+</fieldset>
